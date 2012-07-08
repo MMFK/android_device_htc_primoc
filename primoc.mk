@@ -172,10 +172,22 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/primoc/modules/bcm4329.ko:system/lib/modules/bcm4329.ko
 
-LOCAL_KERNEL := device/htc/primoc/kernel/kernel
+TARGET_PREBUILT_KERNEL := device/htc/primoc/kernel/kernel
 
+ifneq ($(TARGET_PREBUILT_KERNEL),)
+
+# Local Kernel
+LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
+
+# Kernel Modules
+PRODUCT_COPY_FILES += $(shell \
+    find device/htc/primoc/prebuilt/lib/modules -name '*.ko' \
+    | sed -r 's/^\/?(.*\/)([^/ ]+)$$/\1\2:system\/lib\/modules\/\2/' \
+    | tr '\n' ' ')
+
+endif
 
 $(call inherit-product, build/target/product/full_base.mk)
 
