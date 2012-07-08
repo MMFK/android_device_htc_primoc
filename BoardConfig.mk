@@ -25,10 +25,9 @@
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
 
-TARGET_SPECIFIC_HEADER_PATH := device/htc/saga/include
+TARGET_SPECIFIC_HEADER_PATH := device/htc/primoc/include
 
-TARGET_NO_BOOTLOADER := true
-TARGET_BOOTLOADER_BOARD_NAME := saga
+TARGET_BOOTLOADER_BOARD_NAME := primoc
 
 TARGET_BOARD_PLATFORM := msm7x30
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
@@ -84,7 +83,7 @@ TARGET_GRALLOC_USES_PMEM := true
 
 ENABLE_WTF_USE_ACCELERATED_COMPOSITING := true
 
-BOARD_EGL_CFG := device/htc/saga/egl.cfg
+BOARD_EGL_CFG := device/htc/primoc/egl.cfg
 
 BOARD_PREBUILT_LIBAUDIO := false
 BOARD_USES_QCOM_LIBS := true
